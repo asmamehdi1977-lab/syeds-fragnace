@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYEDS FRAGNACE | A Fragrance That Leaves a Legacy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA8C2C',
+                            muted: '#bfa75d'
+                        },
+                        dark: {
+                            DEFAULT: '#030303',
+                            lighter: '#0a0a0a',
+                            card: '#080808',
+                            brown: '#120d0a'
+                        },
+                        ivory: {
+                            DEFAULT: '#F9F6F0',
+                            dark: '#E8E4D9'
+                        },
+                        charcoal: '#1c1c1c'
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'smoke': 'smokeMove 15s infinite alternate ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        smokeMove: {
+                            '0%': { transform: 'scale(1) translate(0, 0) rotate(0deg)' },
+                            '100%': { transform: 'scale(1.2) translate(-20px, 15px) rotate(5deg)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            background-color: #030303;
+            color: #F9F6F0;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; }
+
+        /* Custom Hover Effects */
+        .gold-glow:hover { box-shadow: 0 0 25px rgba(212, 175, 55, 0.15); }
+        .text-glow { text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+
+        /* Reveal Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Cinematic Hero Effects */
+        .hero-overlay {
+            background: radial-gradient(circle at 75% 50%, rgba(212, 175, 55, 0.1) 0%, rgba(3, 3, 3, 0.95) 60%);
+        }
+        
+        .smoke-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 70% 50%, rgba(212,175,55,0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 30% 60%, rgba(255,255,255,0.02) 0%, transparent 40%);
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Nav Transition */
+        #navbar { transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease; border-bottom: 1px solid transparent; }
+        .nav-scrolled {
+            background-color: rgba(3, 3, 3, 0.90);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        /* Forms */
+        input:focus, select:focus { outline: none; border-color: #D4AF37; box-shadow: none; }
+        
+        /* Toast */
+        #toast {
+            transform: translateY(100px); opacity: 0; transition: all 0.4s ease;
+        }
+        #toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Quiz Step Transitions */
+        .quiz-step { display: none; opacity: 0; transition: opacity 0.4s ease; }
+        .quiz-step.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body class="font-sans antialiased text-ivory flex flex-col min-h-screen">
+
+    <nav id="navbar" class="fixed w-full z-50 top-0 left-0 py-6 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <!-- Mobile Menu Icon -->
+        <div class="md:hidden text-gold text-2xl cursor-pointer" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Left Links -->
+        <div class="hidden md:flex space-x-6 lg:space-x-8 text-xs lg:text-sm tracking-widest text-ivory/80">
+            <a href="index.html" class="text-gold border-b border-gold pb-1 transition-colors duration-300 uppercase">Home</a>
+            <a href="shop.html" class="hover:text-gold transition-colors duration-300 uppercase">Shop</a>
+            <a href="#collections" class="hover:text-gold transition-colors duration-300 uppercase">Collections</a>
+            <a href="#discover" class="hover:text-gold transition-colors duration-300 uppercase">Discover Your Scent</a>
+            <a href="#story" class="hover:text-gold transition-colors duration-300 uppercase hidden lg:block">About</a>
+            <a href="#contact" class="hover:text-gold transition-colors duration-300 uppercase hidden lg:block">Contact</a>
+        </div>
+
+        <!-- Logo -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 text-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl lg:text-3xl font-bold tracking-[0.2em] text-gold text-glow">
+                SYEDS
+                <span class="block text-[0.35em] tracking-[0.4em] text-ivory mt-1 font-sans">FRAGNANCE</span>
+            </a>
+        </div>
+
+        <!-- Right Links -->
+        <div class="hidden md:flex space-x-6 lg:space-x-8 text-sm tracking-widest text-ivory/80 items-center">
+            <button onclick="toggleSearch()" class="hover:text-gold transition-colors duration-300"><i class="fas fa-search text-lg"></i></button>
+            <a href="shop.html?view=wishlist" class="hover:text-gold transition-colors duration-300 relative">
+                <i class="far fa-heart text-lg"></i>
+                <span id="nav-wishlist-count" class="absolute -top-2 -right-2 bg-dark-lighter border border-gold text-gold text-[9px] w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+            </a>
+            <button class="hover:text-gold transition-colors duration-300 relative group">
+                <i class="fas fa-shopping-bag text-lg"></i>
+                <span id="nav-cart-count" class="absolute -top-2 -right-2 bg-gold text-black text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold transition-transform group-hover:scale-110">0</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Right -->
+        <div class="md:hidden flex space-x-5 text-gold text-lg items-center">
+            <button onclick="toggleSearch()"><i class="fas fa-search"></i></button>
+            <button class="relative">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="mobile-cart-count" class="absolute -top-2 -right-2 bg-white text-black text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 bg-dark/98 backdrop-blur-xl z-[100] transform -translate-y-full transition-transform duration-500 flex flex-col pt-24 px-8 pb-8">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gold"><i class="fas fa-times"></i></button>
+        <div class="flex flex-col space-y-6 text-center text-lg tracking-widest uppercase font-serif">
+            <a href="index.html" class="text-gold">Home</a>
+            <a href="shop.html" class="text-ivory hover:text-gold transition-colors">Shop</a>
+            <a href="#collections" onclick="toggleMobileMenu()" class="text-ivory hover:text-gold transition-colors">Collections</a>
+            <a href="#discover" onclick="toggleMobileMenu()" class="text-ivory hover:text-gold transition-colors">Discover Your Scent</a>
+            <a href="#story" onclick="toggleMobileMenu()" class="text-ivory hover:text-gold transition-colors">About</a>
+        </div>
+        <div class="mt-auto flex justify-center space-x-6 text-gold text-2xl">
+            <a href="shop.html?view=wishlist"><i class="far fa-heart"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="searchOverlay" class="fixed inset-0 bg-dark/95 backdrop-blur-md z-[110] opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-center items-center px-6">
+        <button onclick="toggleSearch()" class="absolute top-8 right-8 text-3xl text-gold/50 hover:text-gold transition-colors"><i class="fas fa-times"></i></button>
+        <div class="w-full max-w-3xl">
+            <p class="text-gold tracking-[0.2em] text-xs uppercase mb-4 text-center">Find Your Signature Scent</p>
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search perfumes, notes, or collections..." class="w-full bg-transparent border-b-2 border-white/20 text-white text-2xl md:text-4xl py-4 pr-12 focus:border-gold transition-colors font-serif placeholder-white/20" oninput="handleSearch()">
+                <i class="fas fa-search absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl text-gold"></i>
+            </div>
+            <!-- Search Results Dropdown -->
+            <div id="searchResults" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto hidden">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <header class="relative w-full h-screen flex items-center overflow-hidden bg-dark">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 w-full h-full bg-dark-brown/20"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="smoke-bg animate-smoke"></div>
+        <canvas id="particleCanvas" class="absolute inset-0 z-10 pointer-events-none opacity-60"></canvas>
+
+        <!-- Content Split -->
+        <div class="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center h-full pt-20">
+            
+            <!-- Left Text -->
+            <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left animate-fade-in-up mt-10 md:mt-0">
+                <p class="font-sans text-gold tracking-[0.3em] uppercase text-xs md:text-sm mb-4 font-medium border-l border-gold pl-3 ml-1 hidden md:block">BUKHARI FRAGNANCE</p>
+                <p class="font-sans text-gold tracking-[0.3em] uppercase text-xs mb-4 font-medium md:hidden">BUKHARI FRAGNANCE</p>
+                
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-white text-glow">
+                    A FRAGRANCE THAT <br/>
+                    LEAVES A LEGACY.
+                </h1>
+                
+                <p class="font-sans text-sm md:text-base lg:text-lg text-ivory/70 max-w-lg mb-10 font-light leading-relaxed italic border-l border-white/20 pl-4">
+                    “Discover captivating fragrances crafted to express elegance, confidence, and timeless character.”
+                </p>
+                
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
+                    <a href="shop.html" class="px-8 py-4 bg-gold text-black font-semibold tracking-widest text-xs uppercase hover:bg-white transition-all duration-300 text-center shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                        Explore Collection
+                    </a>
+                    <a href="#discover" class="px-8 py-4 border border-gold text-gold font-semibold tracking-widest text-xs uppercase hover:bg-gold hover:text-black transition-all duration-300 text-center relative overflow-hidden group">
+                        <span class="relative z-10">Discover Your Scent</span>
+                        <div class="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-0"></div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Cinematic Image -->
+            <div class="w-full md:w-1/2 h-[50vh] md:h-full relative mt-8 md:mt-0 opacity-0 animate-[fadeInUp_1s_ease-out_0.3s_forwards]">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial-gradient from-gold/10 to-transparent blur-[50px] z-0"></div>
+                <!-- Premium Perfume Bottle Placeholders (Cinematic setup) -->
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" 
+                     alt="Bukhari Signature Bottle" 
+                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[85%] object-contain z-10 drop-shadow-[0_30px_50px_rgba(0,0,0,0.9)] animate-float mix-blend-lighten">
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <a href="#signature" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-gold/50 hover:text-gold flex flex-col items-center transition-colors">
+            <span class="text-[9px] tracking-[0.3em] uppercase mb-2 font-sans">Scroll To Discover</span>
+            <i class="fas fa-chevron-down animate-bounce text-xs"></i>
+        </a>
+    </header>
+
+    <section id="signature" class="py-24 md:py-32 bg-dark-lighter border-y border-white/5 relative">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold tracking-[0.2em] text-xs uppercase mb-3 font-medium">The Signature Collection</p>
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6">TEN DISTINCTIVE FRAGRANCES.<br/><span class="font-light italic text-white/70">ONE UNFORGETTABLE IDENTITY.</span></h2>
+                <div class="w-16 h-[1px] bg-gold/50 mx-auto"></div>
+            </div>
+
+            <!-- Dynamic Signature Products Grid (5 Items) -->
+            <div id="signatureGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-4 mb-16">
+                <!-- Injected via JS (Ali Turab, Hassan, Hussain, Bukhari, Asma) -->
+            </div>
+
+            <div class="text-center reveal">
+                <a href="shop.html" class="inline-flex items-center space-x-3 text-gold text-xs tracking-[0.2em] uppercase font-semibold hover:text-white transition-colors group pb-1 border-b border-transparent hover:border-white">
+                    <span>View All 10 Fragrances</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="collections" class="py-24 bg-dark relative overflow-hidden">
+        <!-- Decor -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-[1400px] mx-auto px-6 md:px-8 relative z-10">
+            <div class="mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">EXPLORE OUR COLLECTIONS</h2>
+                <div class="w-16 h-[1px] bg-gold/50"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Collection 1 -->
+                <div class="group relative h-96 overflow-hidden bg-charcoal cursor-pointer reveal" onclick="window.location.href='shop.html?collection=signature'">
+                    <div class="absolute inset-0 bg-black/60 z-10 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1523293115678-d2902f508b6d?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    <div class="relative z-20 h-full flex flex-col justify-end p-8 border border-white/5 group-hover:border-gold/30 transition-colors">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-gold transition-colors">Signature</h3>
+                        <p class="text-white/60 text-xs font-light mb-6">Ali Turab • Hassan • Hussain • Mehdi</p>
+                        <span class="inline-block border border-white/30 text-white text-[10px] tracking-widest uppercase px-6 py-2 w-max group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all">Explore Collection</span>
+                    </div>
+                </div>
+
+                <!-- Collection 2 -->
+                <div class="group relative h-96 overflow-hidden bg-charcoal cursor-pointer reveal delay-100" onclick="window.location.href='shop.html?collection=royal'">
+                    <div class="absolute inset-0 bg-black/60 z-10 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1592914610354-fd354ea45e48?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    <div class="relative z-20 h-full flex flex-col justify-end p-8 border border-white/5 group-hover:border-gold/30 transition-colors">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-gold transition-colors">Royal</h3>
+                        <p class="text-white/60 text-xs font-light mb-6">Bukhari • Mansoor • Karbala</p>
+                        <span class="inline-block border border-white/30 text-white text-[10px] tracking-widest uppercase px-6 py-2 w-max group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all">Explore Collection</span>
+                    </div>
+                </div>
+
+                <!-- Collection 3 -->
+                <div class="group relative h-96 overflow-hidden bg-charcoal cursor-pointer reveal delay-200" onclick="window.location.href='shop.html?collection=fresh'">
+                    <div class="absolute inset-0 bg-black/60 z-10 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    <div class="relative z-20 h-full flex flex-col justify-end p-8 border border-white/5 group-hover:border-gold/30 transition-colors">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-gold transition-colors">Fresh</h3>
+                        <p class="text-white/60 text-xs font-light mb-6">Aftab • Najaf</p>
+                        <span class="inline-block border border-white/30 text-white text-[10px] tracking-widest uppercase px-6 py-2 w-max group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all">Explore Collection</span>
+                    </div>
+                </div>
+
+                <!-- Collection 4 -->
+                <div class="group relative h-96 overflow-hidden bg-charcoal cursor-pointer reveal delay-300" onclick="window.location.href='shop.html?collection=elegance'">
+                    <div class="absolute inset-0 bg-black/60 z-10 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    <div class="relative z-20 h-full flex flex-col justify-end p-8 border border-white/5 group-hover:border-gold/30 transition-colors">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-gold transition-colors">Elegance</h3>
+                        <p class="text-white/60 text-xs font-light mb-6">Asma</p>
+                        <span class="inline-block border border-white/30 text-white text-[10px] tracking-widest uppercase px-6 py-2 w-max group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all">Explore Collection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-lighter border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <p class="text-gold tracking-[0.2em] text-xs uppercase mb-2">Customer Favorites</p>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold">MOST LOVED FRAGRANCES</h2>
+                </div>
+            </div>
+
+            <!-- Dynamic Best Sellers Grid (4 Items) -->
+            <div id="bestSellersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="discover" class="relative py-32 bg-dark-brown overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark"></div>
+        
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center reveal">
+            <i class="fas fa-magic text-3xl text-gold/30 mb-6"></i>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">FIND YOUR SIGNATURE SCENT</h2>
+            <p class="font-sans text-sm md:text-base text-ivory/70 mb-10 font-light max-w-xl mx-auto">
+                "Your fragrance should feel like an extension of who you are. Take our olfactory journey to discover the scent that feels uniquely yours."
+            </p>
+            <button id="startQuizBtn" onclick="startQuiz()" class="px-10 py-4 border border-gold text-gold font-semibold tracking-widest text-xs uppercase hover:bg-gold hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                Discover My Scent
+            </button>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="hidden mt-12 bg-dark-card border border-white/10 p-8 shadow-2xl relative text-left">
+                <!-- Step 1 -->
+                <div id="quizStep1" class="quiz-step active">
+                    <p class="text-gold text-[10px] tracking-widest uppercase mb-2">Step 1 of 3</p>
+                    <h3 class="font-serif text-2xl mb-6">What fragrance family attracts you?</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button onclick="answerQuiz('family', 'Oud')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Oud</button>
+                        <button onclick="answerQuiz('family', 'Woody')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Woody</button>
+                        <button onclick="answerQuiz('family', 'Floral')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Floral</button>
+                        <button onclick="answerQuiz('family', 'Musk')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Musk</button>
+                        <button onclick="answerQuiz('family', 'Amber')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Amber</button>
+                        <button onclick="answerQuiz('family', 'Fresh')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Fresh</button>
+                        <button onclick="answerQuiz('family', 'Spicy')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Spicy</button>
+                        <button onclick="answerQuiz('family', 'Oriental')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Oriental</button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="quizStep2" class="quiz-step">
+                    <p class="text-gold text-[10px] tracking-widest uppercase mb-2">Step 2 of 3</p>
+                    <h3 class="font-serif text-2xl mb-6">When will you predominantly wear it?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="answerQuiz('occasion', 'Everyday')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Everyday</button>
+                        <button onclick="answerQuiz('occasion', 'Office')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Office</button>
+                        <button onclick="answerQuiz('occasion', 'Evening')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Evening</button>
+                        <button onclick="answerQuiz('occasion', 'Special Occasion')" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Special Occasion</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="quizStep3" class="quiz-step">
+                    <p class="text-gold text-[10px] tracking-widest uppercase mb-2">Step 3 of 3</p>
+                    <h3 class="font-serif text-2xl mb-6">How would you describe your style?</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button onclick="answerQuiz('style', 'Elegant', true)" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Elegant</button>
+                        <button onclick="answerQuiz('style', 'Bold', true)" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Bold</button>
+                        <button onclick="answerQuiz('style', 'Mysterious', true)" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Mysterious</button>
+                        <button onclick="answerQuiz('style', 'Fresh', true)" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Fresh</button>
+                        <button onclick="answerQuiz('style', 'Classic', true)" class="quiz-opt border border-white/20 p-4 hover:border-gold hover:text-gold text-sm transition-colors">Classic</button>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div id="quizResult" class="quiz-step text-center">
+                    <h3 class="font-serif text-3xl text-gold mb-2">YOUR SIGNATURE MATCH</h3>
+                    <p class="text-white/60 font-light text-sm mb-8">Based on your unique profile, we recommend:</p>
+                    
+                    <div id="quizMatchContainer" class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+                        <!-- Injected via JS -->
+                    </div>
+                    
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="window.location.href='shop.html'" class="px-6 py-3 bg-gold text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors">View All Fragrances</button>
+                        <button onclick="startQuiz()" class="px-6 py-3 border border-white/30 text-white/70 text-xs uppercase tracking-widest hover:text-white transition-colors">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark border-y border-white/5 relative">
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-16 reveal">THE ART OF FRAGRANCE</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+                <div class="reveal delay-100">
+                    <div class="w-16 h-16 mx-auto rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold text-xl relative">
+                        <i class="fas fa-wind relative z-10"></i>
+                        <div class="absolute inset-0 bg-gold/10 rounded-full animate-ping opacity-20"></div>
+                    </div>
+                    <h4 class="font-serif tracking-widest text-lg mb-3">TOP NOTES</h4>
+                    <p class="font-sans text-sm text-white/50 font-light leading-relaxed">“The first impression that welcomes you. Bright, ephemeral, and instantly captivating.”</p>
+                </div>
+                
+                <div class="reveal delay-200">
+                    <div class="w-16 h-16 mx-auto rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold text-xl">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <h4 class="font-serif tracking-widest text-lg mb-3">HEART NOTES</h4>
+                    <p class="font-sans text-sm text-white/50 font-light leading-relaxed">“The character that reveals itself over time. The true personality of the composition.”</p>
+                </div>
+                
+                <div class="reveal delay-300">
+                    <div class="w-16 h-16 mx-auto rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold text-xl">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <h4 class="font-serif tracking-widest text-lg mb-3">BASE NOTES</h4>
+                    <p class="font-sans text-sm text-white/50 font-light leading-relaxed">“The unforgettable signature that remains. Deep, rich, and intrinsically tied to memory.”</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="relative bg-dark-lighter overflow-hidden border-b border-white/5">
+        <div class="flex flex-col lg:flex-row">
+            <div class="w-full lg:w-1/2 h-[60vh] lg:h-auto relative reveal">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-dark-lighter z-10 hidden lg:block"></div>
+                <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=1200" 
+                     alt="Perfume Creation Process" 
+                     class="w-full h-full object-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
+            </div>
+            
+            <div class="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center reveal delay-100">
+                <p class="text-gold tracking-[0.2em] text-xs uppercase mb-4">Heritage & Craft</p>
+                <h2 class="font-serif text-3xl lg:text-5xl font-bold mb-8 text-white">THE STORY BEHIND THE SCENT</h2>
+                <div class="space-y-6 text-ivory/60 font-light text-sm md:text-base leading-relaxed mb-10">
+                    <p>
+                        <span class="text-gold font-medium">BUKHARI FRAGNANCE</span> was created around the belief that fragrance is more than a scent. It is identity, character, confidence, and memory captured in a bottle.
+                    </p>
+                    <p>
+                        Each fragrance is meticulously designed using ethically sourced, premium global ingredients to create a distinctive presence — a scent that bypasses fleeting trends and becomes part of your personal story.
+                    </p>
+                </div>
+                <a href="#about" class="inline-flex items-center text-gold text-xs tracking-widest uppercase hover:text-white transition-colors group w-max border-b border-gold hover:border-white pb-1">
+                    <span class="mr-3">Discover Our Story</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark relative">
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="reveal">
+                    <i class="fas fa-hourglass-half text-2xl text-gold/70 mb-4"></i>
+                    <h4 class="font-serif text-sm tracking-widest mb-2 text-white">LONG-LASTING</h4>
+                    <p class="text-xs text-white/50 font-light">Fragrances designed to stay with you throughout the day.</p>
+                </div>
+                <div class="reveal delay-100">
+                    <i class="far fa-gem text-2xl text-gold/70 mb-4"></i>
+                    <h4 class="font-serif text-sm tracking-widest mb-2 text-white">PREMIUM QUALITY</h4>
+                    <p class="text-xs text-white/50 font-light">Carefully selected ingredients and refined compositions.</p>
+                </div>
+                <div class="reveal delay-200">
+                    <i class="fas fa-fire text-2xl text-gold/70 mb-4"></i>
+                    <h4 class="font-serif text-sm tracking-widest mb-2 text-white">CRAFTED WITH PASSION</h4>
+                    <p class="text-xs text-white/50 font-light">Every scent is created with attention to character and detail.</p>
+                </div>
+                <div class="reveal delay-300">
+                    <i class="far fa-clock text-2xl text-gold/70 mb-4"></i>
+                    <h4 class="font-serif text-sm tracking-widest mb-2 text-white">TIMELESS ELEGANCE</h4>
+                    <p class="text-xs text-white/50 font-light">Scents designed to make a lasting, sophisticated impression.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-lighter border-y border-white/5">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold tracking-[0.2em] text-xs uppercase mb-2">Experiences</p>
+                <h2 class="font-serif text-3xl font-bold">WHAT THEY SAY</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-dark-card p-10 border border-white/5 text-center reveal hover:-translate-y-2 transition-transform duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[1px] bg-gold/50"></div>
+                    <div class="text-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-white/70 italic text-sm mb-6 leading-relaxed">“An elegant fragrance with a character that stays memorable. Every time I wear Hussain, it leaves an undeniable impression.”</p>
+                    <h5 class="font-serif text-xs tracking-widest uppercase text-white">Kareem A.</h5>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-dark-card p-10 border border-gold/20 text-center reveal delay-100 hover:-translate-y-2 transition-transform duration-300 shadow-[0_0_20px_rgba(212,175,55,0.05)] relative overflow-hidden">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gold"></div>
+                    <div class="text-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-white/70 italic text-sm mb-6 leading-relaxed">“The depth of Ali Turab is simply unmatched. It feels expensive, mysterious, and beautifully complex throughout the day.”</p>
+                    <h5 class="font-serif text-xs tracking-widest uppercase text-white">Omar S.</h5>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-dark-card p-10 border border-white/5 text-center reveal delay-200 hover:-translate-y-2 transition-transform duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[1px] bg-gold/50"></div>
+                    <div class="text-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-white/70 italic text-sm mb-6 leading-relaxed">“Bukhari Fragnance captures timeless elegance perfectly. Asma is soft, graceful, yet incredibly long-lasting.”</p>
+                    <h5 class="font-serif text-xs tracking-widest uppercase text-white">Sarah M.</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative py-40 overflow-hidden flex items-center justify-center bg-dark">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=2000" 
+                 class="w-full h-full object-cover scale-110 blur-[3px]">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-2xl px-6 reveal">
+            <h2 class="font-serif text-4xl md:text-6xl font-bold mb-6 text-white text-glow">
+                YOUR SIGNATURE.<br/>YOUR SCENT.
+            </h2>
+            <p class="font-sans text-sm md:text-base text-ivory/80 mb-10 font-light italic">
+                “Step into a world of unforgettable fragrances.”
+            </p>
+            <a href="shop.html" class="inline-block px-12 py-5 bg-gold text-black font-bold tracking-[0.2em] text-xs uppercase hover:bg-white transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                Shop The Collection
+            </a>
+        </div>
+    </section>
+
+    <section class="py-20 bg-charcoal text-center px-6 border-t border-white/5">
+        <div class="max-w-xl mx-auto reveal">
+            <h3 class="font-serif text-2xl font-bold mb-3 tracking-widest text-white">JOIN THE FRAGRANCE JOURNEY</h3>
+            <p class="text-white/50 font-light mb-8 text-sm">Be the first to discover new fragrances, exclusive collections, and special offers.</p>
+            <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4 relative" onsubmit="handleNewsletter(event)">
+                <input type="email" id="newsEmail" placeholder="Enter your email" required
+                       class="flex-grow bg-transparent border-b border-white/20 py-3 px-2 text-white font-light text-sm placeholder-white/30 text-center sm:text-left">
+                <button type="submit" class="px-8 py-3 bg-transparent border border-gold text-gold font-bold tracking-widest text-xs uppercase hover:bg-gold hover:text-black transition-all">
+                    Subscribe
+                </button>
+            </form>
+            <p id="newsSuccess" class="text-gold text-xs tracking-widest uppercase mt-6 hidden opacity-0 transition-opacity duration-500">
+                WELCOME TO THE WORLD OF BUKHARI FRAGNANCE.
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-dark pt-20 pb-10 border-t border-white/10 text-sm">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="font-serif text-2xl font-bold tracking-[0.2em] text-gold block mb-6">
+                        BUKHARI
+                        <span class="block text-[0.35em] tracking-[0.4em] text-ivory mt-1 font-sans">FRAGNANCE</span>
+                    </a>
+                    <div class="flex space-x-5 text-lg">
+                        <a href="#" class="text-white/40 hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white/40 hover:text-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white/40 hover:text-gold transition-colors"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="font-serif text-white tracking-widest uppercase mb-6 text-xs">Navigation</h4>
+                    <ul class="space-y-3 text-white/50 font-light text-xs">
+                        <li><a href="index.html" class="hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-gold transition-colors">Shop</a></li>
+                        <li><a href="#collections" class="hover:text-gold transition-colors">Collections</a></li>
+                        <li><a href="#discover" class="hover:text-gold transition-colors">Discover Your Scent</a></li>
+                        <li><a href="#story" class="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div>
+                    <h4 class="font-serif text-white tracking-widest uppercase mb-6 text-xs">Customer Care</h4>
+                    <ul class="space-y-3 text-white/50 font-light text-xs">
+                        <li><a href="#" class="hover:text-gold transition-colors">Shipping</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Returns</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 border-t border-white/10 flex flex-col justify-center items-center text-white/30 text-[10px] font-light tracking-[0.2em] uppercase text-center">
+                <p>&copy; 2026 BUKHARI FRAGNANCE. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[120] bg-dark-card border border-gold/30 px-6 py-4 shadow-2xl flex items-center space-x-4 pointer-events-none rounded-sm">
+        <div class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold border border-gold/20 text-sm">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <p class="text-xs text-white/80 font-light" id="toastMessage">Added to your bag.</p>
+        </div>
+    </div>
+
+    <!-- NEW: Standard HTML Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-dark/95 backdrop-blur-md z-[150] hidden flex-col justify-center items-center px-6 transition-opacity duration-300 opacity-0">
+        <div class="bg-dark-card border border-gold/30 p-8 max-w-md w-full relative shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gold/50 hover:text-gold text-xl"><i class="fas fa-times"></i></button>
+            <h3 class="font-serif text-2xl text-gold mb-2">Complete Your Order</h3>
+            <p class="text-white/60 text-sm mb-6">Enter your details to order <span id="modalProductName" class="text-white font-bold"></span>.</p>
+
+            <!-- Changed to a standard POST form submission so it works without a local server -->
+            <form action="https://formsubmit.co/asmamehdi1977@gmail.com" method="POST" class="space-y-4">
+                
+                <!-- Hidden fields for product data and email config -->
+                <input type="hidden" id="orderProductName" name="Perfume Name">
+                <input type="hidden" id="orderProductPrice" name="Price">
+                <input type="hidden" name="_subject" value="New Perfume Order!">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div>
+                    <label class="block text-white/70 text-[10px] tracking-widest uppercase mb-1">Full Name</label>
+                    <input type="text" name="Name" required class="w-full bg-dark border border-white/20 text-white px-4 py-2 focus:border-gold transition-colors outline-none">
+                </div>
+                <div>
+                    <label class="block text-white/70 text-[10px] tracking-widest uppercase mb-1">Email</label>
+                    <input type="email" name="Email" required class="w-full bg-dark border border-white/20 text-white px-4 py-2 focus:border-gold transition-colors outline-none">
+                </div>
+                <div>
+                    <label class="block text-white/70 text-[10px] tracking-widest uppercase mb-1">Phone Number</label>
+                    <input type="tel" name="Phone" required class="w-full bg-dark border border-white/20 text-white px-4 py-2 focus:border-gold transition-colors outline-none">
+                </div>
+                <div>
+                    <label class="block text-white/70 text-[10px] tracking-widest uppercase mb-1">Delivery Address</label>
+                    <textarea name="Address" required rows="3" class="w-full bg-dark border border-white/20 text-white px-4 py-2 focus:border-gold transition-colors outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-gold text-black font-bold tracking-widest text-xs uppercase hover:bg-white transition-all duration-300 mt-4 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                    Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. Shared Product Database (Exact matches for 10 perfumes)
+        const products = [
+            { id: 1, name: "ALI TURAB", category: "Woody • Oud", family: "Oud", occasion: "Evening", style: "Mysterious", price: 4999, rating: 5, img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400" },
+            { id: 2, name: "HASSAN", category: "Amber • Spicy", family: "Spicy", occasion: "Evening", style: "Bold", price: 4499, rating: 4.8, img: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=400" },
+            { id: 3, name: "HUSSAIN", category: "Woody • Oriental", family: "Woody", occasion: "Special Occasion", style: "Elegant", price: 5499, rating: 5, img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=400" },
+            { id: 4, name: "MEHDI", category: "Musk • Amber", family: "Amber", occasion: "Office", style: "Classic", price: 4799, rating: 4.9, img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400" },
+            { id: 5, name: "BUKHARI", category: "Oud • Woody • Musk", family: "Oud", occasion: "Special Occasion", style: "Bold", price: 5999, rating: 5, img: "https://images.unsplash.com/photo-1523293115678-d2902f508b6d?auto=format&fit=crop&q=80&w=400" },
+            { id: 6, name: "AFTAB", category: "Fresh • Citrus", family: "Fresh", occasion: "Everyday", style: "Fresh", price: 3999, rating: 4.7, img: "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&q=80&w=400" },
+            { id: 7, name: "MANSOOR", category: "Leather • Woody", family: "Woody", occasion: "Office", style: "Classic", price: 4899, rating: 4.8, img: "https://images.unsplash.com/photo-1592914610354-fd354ea45e48?auto=format&fit=crop&q=80&w=400" },
+            { id: 8, name: "KARBALA", category: "Oud • Amber • Spicy", family: "Oriental", occasion: "Evening", style: "Mysterious", price: 5799, rating: 5, img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400&hue=45" },
+            { id: 9, name: "NAJAF", category: "Oud • Musk • Oriental", family: "Musk", occasion: "Evening", style: "Elegant", price: 5299, rating: 4.9, img: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=400&sat=-30" },
+            { id: 10, name: "ASMA", category: "Floral • Musk", family: "Floral", occasion: "Everyday", style: "Elegant", price: 4299, rating: 4.9, img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=400&hue=320" }
+        ];
+
+        // 2. Global State Management via LocalStorage
+        let cart = JSON.parse(localStorage.getItem('bf_cart')) || [];
+        let wishlist = new Set(JSON.parse(localStorage.getItem('bf_wishlist')) || []);
+
+        function updateStateUI() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('nav-cart-count').innerText = count;
+            document.getElementById('mobile-cart-count').innerText = count;
+            
+            const wCount = wishlist.size;
+            const wBadge = document.getElementById('nav-wishlist-count');
+            wBadge.innerText = wCount;
+            if(wCount > 0) { wBadge.classList.remove('hidden'); } else { wBadge.classList.add('hidden'); }
+            
+            // Sync heart icons on page
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                const id = parseInt(btn.dataset.id);
+                if(wishlist.has(id)) {
+                    btn.innerHTML = '<i class="fas fa-heart text-gold text-lg"></i>';
+                } else {
+                    btn.innerHTML = '<i class="far fa-heart text-lg"></i>';
+                }
+            });
+        }
+
+        let currentSelectedProduct = null;
+
+        window.addToCart = function(id, name, event) {
+            if(event) event.stopPropagation();
+            
+            // Find the product being ordered
+            currentSelectedProduct = products.find(p => p.id === id);
+
+            // Populate hidden inputs and text in the modal
+            document.getElementById('modalProductName').innerText = currentSelectedProduct.name;
+            document.getElementById('orderProductName').value = currentSelectedProduct.name;
+            document.getElementById('orderProductPrice').value = `PKR ${currentSelectedProduct.price.toLocaleString()}`;
+
+            // Show the modal
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        window.closeCheckoutModal = function() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        window.toggleWishlist = function(id, event) {
+            if(event) event.stopPropagation();
+            if(wishlist.has(id)) {
+                wishlist.delete(id);
+            } else {
+                wishlist.add(id);
+                const p = products.find(x => x.id === id);
+                showToast(`Saved to wishlist.`);
+            }
+            localStorage.setItem('bf_wishlist', JSON.stringify(Array.from(wishlist)));
+            updateStateUI();
+        }
+
+        let toastTimeout;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        // 3. Render Product Cards
+        function generateProductCard(p, isCompact = false) {
+            const price = `PKR ${p.price.toLocaleString()}`;
+            // Stars
+            let starsHTML = '';
+            const full = Math.floor(p.rating);
+            const half = p.rating % 1 !== 0;
+            for(let i=0; i<5; i++) {
+                if(i<full) starsHTML+='<i class="fas fa-star"></i>';
+                else if(i===full && half) starsHTML+='<i class="fas fa-star-half-alt"></i>';
+                else starsHTML+='<i class="far fa-star"></i>';
+            }
+
+            return `
+            <div class="group bg-dark-card border border-white/5 flex flex-col h-full relative hover:border-gold/30 transition-all duration-500 gold-glow cursor-pointer" onclick="window.location.href='shop.html?id=${p.id}'">
+                <button data-id="${p.id}" onclick="toggleWishlist(${p.id}, event)" class="wishlist-btn absolute top-4 right-4 z-20 text-white/40 hover:text-gold transition-colors">
+                    <i class="far fa-heart text-lg"></i>
+                </button>
+                <div class="${isCompact ? 'h-56' : 'h-72'} overflow-hidden relative bg-[#0a0a0a] flex items-center justify-center p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <img src="${p.img}" alt="${p.name}" class="h-full object-contain relative z-0 transform group-hover:scale-110 transition-transform duration-700 mix-blend-lighten drop-shadow-2xl">
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-6 py-2 border border-gold text-gold text-[10px] tracking-widest uppercase bg-black/50">View Fragrance</span>
+                    </div>
+                </div>
+                <div class="p-6 text-center flex-grow flex flex-col justify-between border-t border-white/5 relative z-20 bg-dark-card group-hover:bg-[#111] transition-colors">
+                    <div>
+                        <p class="text-gold/60 text-[9px] tracking-[0.2em] uppercase mb-2">${p.category}</p>
+                        <h4 class="font-serif text-lg font-bold mb-2 group-hover:text-gold transition-colors text-white">${p.name}</h4>
+                        <div class="text-gold text-[9px] mb-4 space-x-[1px] flex justify-center">${starsHTML}</div>
+                    </div>
+                    <div>
+                        <p class="font-sans text-white/90 text-sm mb-4">${price}</p>
+                        <button onclick="addToCart(${p.id}, '${p.name}', event)" class="w-full py-3 border border-white/20 text-[10px] font-bold tracking-widest uppercase text-white/70 hover:bg-gold hover:text-black hover:border-gold transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        // Initialize Grids
+        document.addEventListener('DOMContentLoaded', () => {
+            // Signature (Ali Turab, Hassan, Hussain, Bukhari, Asma)
+            const sigIds = [1, 2, 3, 5, 10];
+            const sigHTML = sigIds.map(id => generateProductCard(products.find(p => p.id === id))).join('');
+            document.getElementById('signatureGrid').innerHTML = sigHTML;
+
+            // Best Sellers (Dynamically pick 4 high rated)
+            const bestIds = [3, 8, 5, 9]; // Specific selections for variety
+            const bestHTML = bestIds.map(id => generateProductCard(products.find(p => p.id === id), true)).join('');
+            document.getElementById('bestSellersGrid').innerHTML = bestHTML;
+
+            updateStateUI();
+        });
+
+        // 4. UI Interactions
+        
+        // Sticky Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Scroll Reveal
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        window.toggleMobileMenu = function() {
+            if(mobileMenu.classList.contains('-translate-y-full')) {
+                mobileMenu.classList.remove('-translate-y-full');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('-translate-y-full');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Newsletter
+        window.handleNewsletter = function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('newsSuccess');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            setTimeout(() => {
+                btn.innerText = 'SUBSCRIBE';
+                document.getElementById('newsEmail').value = '';
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('opacity-100'), 10);
+                setTimeout(() => {
+                    msg.classList.remove('opacity-100');
+                    setTimeout(() => msg.classList.add('hidden'), 500);
+                }, 4000);
+            }, 1000);
+        }
+
+        // 5. Search Overlay
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        window.toggleSearch = function() {
+            if(searchOverlay.classList.contains('opacity-0')) {
+                searchOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                searchInput.focus();
+                document.body.style.overflow = 'hidden';
+            } else {
+                searchOverlay.classList.add('opacity-0', 'pointer-events-none');
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                searchResults.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        window.handleSearch = function() {
+            const query = searchInput.value.toLowerCase();
+            if(query.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+            
+            const results = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query) ||
+                p.family.toLowerCase().includes(query)
+            );
+
+            if(results.length > 0) {
+                searchResults.innerHTML = results.map(p => `
+                    <div class="flex items-center space-x-4 bg-dark-card p-4 border border-white/10 hover:border-gold cursor-pointer transition-colors" onclick="window.location.href='shop.html?id=${p.id}'">
+                        <img src="${p.img}" class="w-16 h-16 object-contain bg-black">
+                        <div>
+                            <h5 class="font-serif text-white">${p.name}</h5>
+                            <p class="text-[10px] text-gold uppercase tracking-widest">${p.category}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = `<p class="text-white/50 text-center py-4 text-sm col-span-full">No fragrances found matching "${query}".</p>`;
+            }
+            searchResults.classList.remove('hidden');
+        }
+
+        // 6. Interactive Quiz Logic
+        let quizAnswers = {};
+        window.startQuiz = function() {
+            document.getElementById('startQuizBtn').classList.add('hidden');
+            const qc = document.getElementById('quizContainer');
+            qc.classList.remove('hidden');
+            // reset
+            quizAnswers = {};
+            document.querySelectorAll('.quiz-step').forEach(s => {
+                s.classList.remove('active');
+                s.style.display = 'none';
+            });
+            const s1 = document.getElementById('quizStep1');
+            s1.style.display = 'block';
+            setTimeout(() => s1.classList.add('active'), 50);
+        }
+
+        window.answerQuiz = function(key, val, isLast = false) {
+            quizAnswers[key] = val;
+            
+            // Visual feedback on buttons in current step
+            const currentStepDiv = event.target.closest('.quiz-step');
+            currentStepDiv.querySelectorAll('button').forEach(b => {
+                b.classList.remove('border-gold', 'text-gold');
+                b.classList.add('border-white/20');
+            });
+            event.target.classList.add('border-gold', 'text-gold');
+            event.target.classList.remove('border-white/20');
+
+            setTimeout(() => {
+                currentStepDiv.classList.remove('active');
+                setTimeout(() => {
+                    currentStepDiv.style.display = 'none';
+                    if(!isLast) {
+                        const nextId = 'quizStep' + (parseInt(currentStepDiv.id.slice(-1)) + 1);
+                        const nextStep = document.getElementById(nextId);
+                        nextStep.style.display = 'block';
+                        setTimeout(() => nextStep.classList.add('active'), 50);
+                    } else {
+                        showQuizResult();
+                    }
+                }, 400);
+            }, 300);
+        }
+
+        function showQuizResult() {
+            // Very simple recommendation engine
+            let scores = products.map(p => ({ id: p.id, score: 0 }));
+            
+            scores.forEach(s => {
+                const p = products.find(x => x.id === s.id);
+                if(p.family === quizAnswers.family) s.score += 3;
+                if(p.occasion === quizAnswers.occasion) s.score += 2;
+                if(p.style === quizAnswers.style) s.score += 2;
+            });
+            
+            scores.sort((a,b) => b.score - a.score);
+            const recommendedIds = scores.slice(0, 2).map(s => s.id); // Top 2 matches
+            
+            const matchHTML = recommendedIds.map(id => {
+                const p = products.find(x => x.id === id);
+                return `
+                <div class="bg-dark p-4 border border-gold/30 text-center w-full sm:w-48 hover:-translate-y-1 transition-transform cursor-pointer" onclick="window.location.href='shop.html?id=${p.id}'">
+                    <img src="${p.img}" class="w-full h-32 object-contain mb-3 drop-shadow-lg">
+                    <h5 class="font-serif text-sm font-bold text-white mb-1">${p.name}</h5>
+                    <p class="text-[9px] text-gold tracking-widest uppercase">${p.family}</p>
+                </div>`;
+            }).join('');
+            
+            document.getElementById('quizMatchContainer').innerHTML = matchHTML;
+            
+            const res = document.getElementById('quizResult');
+            res.style.display = 'block';
+            setTimeout(() => res.classList.add('active'), 50);
+        }
+
+        // 7. Hero Particles Animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = Math.random() * -0.5 - 0.1;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if(this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fill();
+            }
+        }
+
+        for(let i=0; i<70; i++) particles.push(new Particle());
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+    </script>
+</body>
+</html>
